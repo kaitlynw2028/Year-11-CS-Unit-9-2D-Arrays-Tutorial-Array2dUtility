@@ -5,10 +5,10 @@ public class Array2dUtility {
 
     // 1. print
     // Implement a method called print that prints out the values of a 2D array of integers row by row.
-    public static void print(int[][] array) {
-        for (int row = 0; row < array.length; row++) {
-            for (int col = 0; col < array[row].length; col++) {
-                System.out.print(array[row][col] + " ");
+    public static void print(int[][]array){
+        for (int[] row: array) {
+            for (int col: row) {
+                System.out.print(col + " ");
             }
             System.out.println();
         }
@@ -16,14 +16,14 @@ public class Array2dUtility {
 
     // 2. sum
     // Implement a method called sum that returns the sum of a 2D array of integers
-    public static int sum(int[][] array) {
-        int total = 0;
-        for (int row = 0; row < array.length; row++) {
-            for (int col = 0; col < array[row].length; col++) {
-                total += array[row][col];
+    public static int sum(int[][] array){
+        int sum = 0;
+        for (int[] row: array){
+            for (int col:row){
+                sum+=col;
             }
         }
-        return total;
+        return sum;
     }
 
     // 3. average
@@ -40,41 +40,39 @@ public class Array2dUtility {
 
     // 4. minimum
     // Implement a method called minimum that returns the minimum value of a 2D array of integers.
-    public static int minimum(int[][] array) {
+    public static int minimum(int[][] array){
         int min = array[0][0];
-        for (int row = 0; row < array.length; row++) {
-            for (int col = 0; col < array[row].length; col++) {
-                if (array[row][col] < min) {
-                    min = array[row][col];
+        for (int[] num : array){
+            for (int i : num){
+                if (i < min){
+                    min = i;
                 }
             }
         }
         return min;
     }
 
-
     // 5. maximum
     // Implement a method called maximum that returns the maximum value of a 2D array of integers.
-    public static int maximum(int[][] array) {
+    public static int maximum(int[][] array){
         int max = array[0][0];
-        for (int row = 0; row < array.length; row++) {
-            for (int col = 0; col < array[row].length; col++) {
-                if (array[row][col] > max) {
-                    max = array[row][col];
+        for (int[] num : array){
+            for (int i : num){
+                if (i > max){
+                    max = i;
                 }
             }
         }
         return max;
     }
-
     // 6. evenCountStandard
     // Implement a method called evenCountStandard that returns the number of even numbers in a 2D array of integers.
     // Use a standard for loop to implement this method.
-    public static int evenCountStandard(int[][] array) {
+    public static int evenCountStandard(int[][] array){
         int count = 0;
-        for (int row = 0; row < array.length; row++) {
-            for (int col = 0; col < array[row].length; col++) {
-                if (array[row][col] % 2 == 0) {
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j < array[i].length; j++){
+                if (array[i][j]%2 == 0){
                     count++;
                 }
             }
@@ -115,31 +113,31 @@ public class Array2dUtility {
 
     // 9. rowSums
     // Implement a method called rowSums that returns a one dimensional array that contains the sum of each row at each index.
-    public static int[] rowSums(int[][] array) {
-        int[] result = new int[array.length];
-        for (int row = 0; row < array.length; row++) {
-            int rowSum = 0;
-            for (int col = 0; col < array[row].length; col++) {
-                rowSum += array[row][col];
+    public static int[] rowSums(int[][] array){
+        int[] sums = new int[array.length];
+        int i = 0;
+        for (int[] num : array){
+            int sum = 0;
+            for (int h : num){
+                sum+=h;
             }
-            result[row] = rowSum;
+            sums[i] = sum;
+            i++;
         }
-        return result;
+        return sums;
     }
 
     // 10. colSums
     // Implement a method called colSums that returns a one dimensional array that contains the sum of each col at each index.
-    public static int[] colSums(int[][] array) {
-        int cols = array[0].length;
-        int[] result = new int[cols];
-        for (int col = 0; col < cols; col++) {
-            int colSum = 0;
-            for (int row = 0; row < array.length; row++) {
-                colSum += array[row][col];
+    public static int[] colSums(int[][] array){
+        int[] sums = new int[array[0].length];
+        for (int i = 0; i < array[0].length; i++){
+            int sum = 0;
+            for (int[] row : array){
+                sum+=row[i];
             }
-            result[col] = colSum;
+            sums[i] = sum;
         }
-        return result;
+        return sums;
     }
-
 }
